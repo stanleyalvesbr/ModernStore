@@ -10,15 +10,17 @@ namespace ModernStore.Domain.Entities
 {
     public class OrderItem : Entity
     {
-        public OrderItem(Product product, int quantity, decimal price)
+        public OrderItem(Product product, int quantity)
         {
             Product = product;
             Quantity = quantity;
             Price = Product.Price;
 
             new ValidationContract<OrderItem>(this)
-                .IsGreaterThan(x => x.Quantity, 1);
+                .IsGreaterThan(x => x.Quantity, 1)
+                .IsGreaterThan(x => x.Product.QuantityOnHand, Quantity + 1, $"Não temos tantos {product.Title}(s) em estoque");
 
+            Product.DecreaseQuantity((quantity));
         }
 
         public Product Product { get; private set; }
