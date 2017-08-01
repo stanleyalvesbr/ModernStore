@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernStore.Domain", "Moder
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernStore.Console", "ModernStore.Console\ModernStore.Console.csproj", "{F60DCF5D-B2D4-4A84-A6A9-2A43E4871F02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernStore.Shared", "ModernStore.Shared\ModernStore.Shared.csproj", "{E0E493AC-D670-49EE-810B-ECD9A1025931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernStore.Domain.Tests", "ModernStore.Domain.Tests\ModernStore.Domain.Tests.csproj", "{928B4A8E-D7C2-4EE1-AFC3-245D81E179E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F60DCF5D-B2D4-4A84-A6A9-2A43E4871F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F60DCF5D-B2D4-4A84-A6A9-2A43E4871F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F60DCF5D-B2D4-4A84-A6A9-2A43E4871F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E493AC-D670-49EE-810B-ECD9A1025931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E493AC-D670-49EE-810B-ECD9A1025931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E493AC-D670-49EE-810B-ECD9A1025931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E493AC-D670-49EE-810B-ECD9A1025931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928B4A8E-D7C2-4EE1-AFC3-245D81E179E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928B4A8E-D7C2-4EE1-AFC3-245D81E179E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928B4A8E-D7C2-4EE1-AFC3-245D81E179E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928B4A8E-D7C2-4EE1-AFC3-245D81E179E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,37 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.AccessControl;
+using FluentValidator;
+using ModernStore.Shared.Entities;
 
 namespace ModernStore.Domain.Entities
 {
-    public class Customer
+    public class Customer : Entity
     {
-        public Customer(string firstName, string lastName, DateTime? birthDate, string password, string email)
+        public Customer(
+            string firstName,
+            string lastName,
+            string email,
+            User user)
         {
-            Id = Guid.NewGuid();
-            FirstName = firstName;
+           FirstName = firstName;
             LastName = lastName;
-            BirthDate = birthDate;
-            Active = false;
-            UserName = email;
-            Password = password;
+            BirthDate = null;
             Email = email;
+            
+            
 
             //Validações
 
-        }
+            new ValidationContract<Customer>(this)
+                .IsRequired(x => x.FirstName, "Nome é obrigatório")
+                .HasMaxLenght(x => x.FirstName, 60)
+                .HasMinLenght(x => x.FirstName, 3, "Tamanho mínimo 3 caracteres")
+                .IsRequired(x => x.LastName, "SobreNome é obrigatório")
+                .HasMaxLenght(x => x.LastName, 60)
+                .HasMinLenght(x => x.LastName, 3, "Tamanho mínimo 3 caracteres")
+                .IsEmail(x => x.Email, "Email inválido");
 
-        public Guid Id { get; private set; }
+
+        }
+        
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public DateTime? BirthDate { get; private set; }
-        public bool Active { get; private set; }
-        public string UserName { get; private set; }
-        public string Password { get; private set; }
         public string Email { get; private set; }
+        public User User { get; private set; }
 
-
-        public void Activate()
+        public void Update(string firstname, string lastname, DateTime birthDate)
         {
-            Active = true;
+            FirstName = FirstName;
+            LastName = LastName;
+            BirthDate = birthDate;
         }
 
         public override string ToString()
