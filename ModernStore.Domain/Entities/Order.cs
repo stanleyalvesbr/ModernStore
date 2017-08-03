@@ -26,7 +26,7 @@ namespace ModernStore.Domain.Entities
 
             new ValidationContract<Order>(this)
                 .IsGreaterThan(x => x.DeliveryFee, 0)
-                .IsGreaterThan(x => x.DeliveryFee, -1);
+                .IsGreaterThan(x => x.Discount, -1);
         }
 
         public Customer Customer { get; private set; }

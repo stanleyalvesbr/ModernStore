@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.AccessControl;
 using FluentValidator;
+using ModernStore.Domain.ValueObjects;
 using ModernStore.Shared.Entities;
 
 namespace ModernStore.Domain.Entities
@@ -9,48 +10,37 @@ namespace ModernStore.Domain.Entities
     public class Customer : Entity
     {
         public Customer(
-            string firstName,
-            string lastName,
-            string email,
+            Name name,
+            Email email,
+            Document document,
             User user)
         {
-           FirstName = firstName;
-            LastName = lastName;
+            Name = name;
             BirthDate = null;
             Email = email;
+            Document = document;
+            User = user;
             
             
-
-            //Validações
-
-            new ValidationContract<Customer>(this)
-                .IsRequired(x => x.FirstName, "Nome é obrigatório")
-                .HasMaxLenght(x => x.FirstName, 60)
-                .HasMinLenght(x => x.FirstName, 3, "Tamanho mínimo 3 caracteres")
-                .IsRequired(x => x.LastName, "SobreNome é obrigatório")
-                .HasMaxLenght(x => x.LastName, 60)
-                .HasMinLenght(x => x.LastName, 3, "Tamanho mínimo 3 caracteres")
-                .IsEmail(x => x.Email, "Email inválido");
+            AddNotifications(name.Notifications);
+            AddNotifications(email.Notifications);
+            AddNotifications(Document.Notifications);
 
 
         }
-        
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
+
+        public Name Name { get; private set; }
         public DateTime? BirthDate { get; private set; }
-        public string Email { get; private set; }
+        public Email Email { get; private set; }
+        public Document Document { get; private set; }
         public User User { get; private set; }
 
-        public void Update(string firstname, string lastname, DateTime birthDate)
+        public void Update(Name name, DateTime birthDate)
         {
-            FirstName = FirstName;
-            LastName = LastName;
+            Name = name;
             BirthDate = birthDate;
         }
 
-        public override string ToString()
-        {
-            return $"{FirstName} {LastName}";
-        }
+        
     }
 }

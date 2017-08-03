@@ -15,7 +15,11 @@ namespace ModernStore.Console
             var mousepad = new Product("Mouse Pad", 99, "mousepad.jpg", 20);
             var teclado = new Product("Teclado", 599, "teclado.jpg", 20);
 
+            System.Console.WriteLine($"Mouses: {mouse.QuantityOnHand}");
+            System.Console.WriteLine($"Mouses Pag: {mousepad.QuantityOnHand}");
+            System.Console.WriteLine($"Teclados: {teclado.QuantityOnHand}");
 
+ 
             var order = new Order(customer, 8, 10);
             order.AddItem(new OrderItem(mouse, 2));
             order.AddItem(new OrderItem(mousepad, 2));
